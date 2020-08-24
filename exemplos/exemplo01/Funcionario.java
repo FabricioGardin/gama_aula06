@@ -5,7 +5,7 @@ package exemplos.exemplo01;
  */
 public class Funcionario {
 
-    private String nome;
+    protected String nome; // Protected: pode acessar diretamente da classe derivada ou de classes dentro do mesmo pacote.
     private double salario;
 
     public Funcionario(){ // construtor default
@@ -13,7 +13,7 @@ public class Funcionario {
 
     }
 
-    /* Overload (Polimorfismo) - pelo menos um parametro deve ser 
+    /* Overload (Polimorfismo) - Mesmo nome, mas pelo menos um parametro deve ser 
     diferente do construtor default
     */
     public Funcionario(String nome, double salario){
@@ -42,8 +42,20 @@ public class Funcionario {
     }
 
     public void setSalario(double salario){
-        if( salario> 0){
+        if( salario > 0){
             this.salario = salario;
         }       
+    }
+
+    public String imprimir(){
+        return "Funcionario: " + nome + " salario: " + String.format("%.2f", salario);
+
+    }
+
+    public void aumentarSalario(double perc) {
+        // salario = salario + (salario * perc);
+        // salario = salario * ( 1 + perc);
+        salario *= ( 1 + perc);
+
     }
 }
